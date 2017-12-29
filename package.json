@@ -1,0 +1,13 @@
+{
+  "name": "validate_cpf_cnpj",
+  "description": "Validates Brazilian CPF and CNPJ",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:leoschmitz/validate_cpf_cnpj.git"
+  },
+  "license": "Apache-2.0",
+  "version": "0.0.1",
+  "dependencies": {
+    "jsdoc": "^3.5.5"
+  }
+}
