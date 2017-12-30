@@ -3,7 +3,7 @@
  * @param {string} code Code
  * @returns {list} list of digits
  */
-var get_numbers = function(code){
+function getNumbers(code){
 	numbers = []
 	if (!code || code.length === 0)
 		return numbers
@@ -16,17 +16,11 @@ var get_numbers = function(code){
 }
 
 /**
- * Validates CPF (Cadastro de Pessoa Física)
- *
- * @param {string} cpf CPF code, which can be formatted or not
- * @returns {bool} valid or invalid
+ * Get both CPF check digits.
+ * @param {string} cpf CPF numbers only
+ * @returns {list} digit 1 and 2
  */
-var validate_cpf = function(cpf){
-	var valid = false;
-	cpf = get_numbers(cpf);
-	if (cpf.length != 11)
-		return false;
-
+function getCPFCheckDigits(cpf){
 	var digit1 = 0;
 	var digit2 = 0;
 	for (var i = 0; i < 9; i++){
@@ -36,12 +30,27 @@ var validate_cpf = function(cpf){
 	digit1 = (digit1 % 11) > 1 ? 11 - (digit1 % 11) : 0;
 	digit2 = digit2 + digit1 * 2;
 	digit2 = (digit2 % 11) > 1 ? 11 - (digit2 % 11) : 0;
-
-	return digit2 == cpf[10] && digit1 == cpf[9];
+	return [digit1, digit2]
 }
 
-console.log(validate_cpf());
-console.log(validate_cpf(''));
-console.log(validate_cpf('123.456.789-09'));
-console.log(validate_cpf('843.667.254-28'));
-console.log(validate_cpf('111.444.777-35'));
+/**
+ * Validates CPF (Cadastro de Pessoa Física)
+ * @param {string} cpf CPF code, which can be formatted or not
+ * @returns {bool} valid or invalid
+ */
+function isCPFValid(cpf){
+	var valid = false;
+	cpf = getNumbers(cpf);
+	if (cpf.length != 11)
+		return false;
+
+	var checkdigits = getCPFCheckDigits(cpf);
+
+	return checkdigits[0] == cpf[9] && checkdigits[1] == cpf[10];
+}
+
+console.log(isCPFValid());
+console.log(isCPFValid(''));
+console.log(isCPFValid('123.456.789-09'));
+console.log(isCPFValid('843.667.254-28'));
+console.log(isCPFValid('111.444.777-35'));
