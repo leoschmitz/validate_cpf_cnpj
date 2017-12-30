@@ -30,7 +30,7 @@ function getCPFCheckDigits(cpf){
 	digit1 = (digit1 % 11) > 1 ? 11 - (digit1 % 11) : 0;
 	digit2 = digit2 + digit1 * 2;
 	digit2 = (digit2 % 11) > 1 ? 11 - (digit2 % 11) : 0;
-	return [digit1, digit2]
+	return [digit1, digit2];
 }
 
 /**
