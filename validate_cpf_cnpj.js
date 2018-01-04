@@ -72,7 +72,9 @@ function getCNPJCheckDigits(cnpj){
 }
 
 /**
- * Validate CNPJ
+ * Validate CNPJ.
+ * @param {string} cnpj CNPJ code, which can be formatted or not
+ * @returns {bool} valid or invalid
  */
 function isCNPJValid(cnpj){
 	var valid = false;
@@ -80,18 +82,7 @@ function isCNPJValid(cnpj){
 	cnpj = getNumbers(cnpj);
 	if (cnpj.length != 14)
 		return false;
-	
+
 	var checkdigits = getCNPJCheckDigits(cnpj);
 	return checkdigits[0] == cnpj[12] && checkdigits[1] == cnpj[13];
 }
-
-console.log(isCPFValid());
-console.log(isCPFValid(''));
-console.log(isCPFValid('123.456.789-09'));
-console.log(isCPFValid('843.667.254-28'));
-console.log(isCPFValid('111.444.777-35'));
-
-console.log(isCNPJValid());
-console.log(isCNPJValid(''));
-// console.log(isCNPJValid('33.000.167/0001-01'));
-console.log(isCNPJValid('11.444.777/0001-61'));
