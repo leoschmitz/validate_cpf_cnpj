@@ -3,8 +3,21 @@
   "description": "Validates Brazilian CPF and CNPJ",
   "repository": {
     "type": "git",
-    "url": "git@github.com:leoschmitz/validate_cpf_cnpj.git"
+    "url": "git+ssh://git@github.com/leoschmitz/validate_cpf_cnpj.git"
   },
   "license": "Apache-2.0",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "bugs": {
+    "url": "https://github.com/leoschmitz/validate_cpf_cnpj/issues"
+  },
+  "homepage": "https://github.com/leoschmitz/validate_cpf_cnpj#readme",
+  "main": "validate_cpf_cnpj.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "CPF",
+    "CNPJ"
+  ],
+  "author": "Leonardo Schmitz"
 }
